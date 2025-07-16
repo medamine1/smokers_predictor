@@ -1,0 +1,22 @@
+# Virtual environment
+myenv/
+
+# Python files
+*.pyc
+__pycache__/
+
+# VS Code settings
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# SQLite DB
+db.sqlite3
+
+# Django static/media files
+/static/
+/media/
+
+# Secrets (if any)
+.env
