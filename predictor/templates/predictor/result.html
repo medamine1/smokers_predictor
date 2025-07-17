@@ -45,19 +45,13 @@
 </head>
 <body>
     <div class="result-container">
-        <h1>Prediction Result</h1>
-        
-        <div class="prediction">
-            {% if result == 1 %}
-                🚬 The person is likely a <strong>smoker</strong>.
-            {% else %}
-                ✅ The person is likely <strong>not a smoker</strong>.
-            {% endif %}
-        </div>
+       <h2>Prediction Result</h2>
 
-        <div class="probability">
-            Confidence: <strong>{{ proba }}</strong>
-        </div>
+<p><strong>Status:</strong> {% if result == 1 %}Smoker{% else %}Non-smoker{% endif %}</p>
+
+<p>Probability of being a smoker: {{ probability|floatformat:2 }}%</p>
+
+
 
         <a href="/" class="back-link">← Predict Again</a>
     </div>
