@@ -1,6 +1,130 @@
-<h2>Predict if you're a smoker</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Predict</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smoker Predictor</title>
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .container {
+    background: #fff;
+    max-width: 480px;
+    width: 100%;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .container:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    color: #4a4a4a;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #555;
+    font-size: 0.95rem;
+  }
+
+  input, select {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1.8px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+  }
+
+  input:focus, select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 6px #667eea;
+    outline: none;
+  }
+
+  .errorlist {
+    color: #d93025;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    margin-bottom: -10px;
+  }
+
+  button {
+    margin-top: 25px;
+    padding: 14px;
+    background: #667eea;
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background: #5a67d8;
+  }
+
+  /* Responsive */
+  @media (max-width: 500px) {
+    .container {
+      padding: 25px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Predict if You're a Smoker</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+      {% if field.errors %}
+        <ul class="errorlist">
+          {% for error in field.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+    <button type="submit">Predict</button>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,59 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Prediction Result</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            background: #f7f7f7;
-        }
-        .result-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 500px;
-            margin: auto;
-            text-align: center;
-        }
-        .result-container h1 {
-            font-size: 24px;
-            color: #333;
-        }
-        .prediction {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #007bff;
-        }
-        .probability {
-            font-size: 18px;
-            color: #666;
-        }
-        .back-link {
-            margin-top: 30px;
-            display: inline-block;
-            text-decoration: none;
-            color: #007bff;
-            border: 1px solid #007bff;
-            padding: 8px 16px;
-            border-radius: 6px;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prediction Result</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .container {
+    background: #fff;
+    max-width: 480px;
+    width: 100%;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+  h2 {
+    color: #4a4a4a;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  .prediction {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  .smoker {
+    color: #d93025; /* red */
+  }
+  .nonsmoker {
+    color: #28a745; /* green */
+  }
+  .probability {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  button {
+    padding: 14px 30px;
+    background: #667eea;
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  button:hover {
+    background: #5a67d8;
+  }
+</style>
 </head>
 <body>
-    <div class="result-container">
-       <h2>Prediction Result</h2>
 
-<p><strong>Status:</strong> {% if result == 1 %}Smoker{% else %}Non-smoker{% endif %}</p>
+<div class="container">
+  <h2>Prediction Result</h2>
 
-<p>Probability of being a smoker: {{ probability|floatformat:2 }}%</p>
+  <div class="prediction">
+    {% if result == 1 %}
+      <span class="smoker">🚬 The person is likely a <strong>smoker</strong>.</span>
+    {% else %}
+      <span class="nonsmoker">✅ The person is likely <strong>not a smoker</strong>.</span>
+    {% endif %}
+  </div>
 
+  <div class="probability">
+    Probability: {{ probability|floatformat:2 }}%
+  </div>
 
+  <a href="{% url 'predictor:index' %}" class="btn">
+    <button>Make Another Prediction</button>
+  </a>
+</div>
 
-        <a href="/" class="back-link">← Predict Again</a>
-    </div>
 </body>
 </html>

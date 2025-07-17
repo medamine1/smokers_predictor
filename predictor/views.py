@@ -10,14 +10,12 @@ def predict_view(request):
          result, probability = predict(input_data)  
          print(f"Prediction: {result}, Probability: {probability}")
          return render(request, 'predictor/result.html', {
-                'result': result,       # 0 or 1
-                'probability': probability*100, # float between 0 and 1
+                'result': result,       
+                'probability': probability*100, 
                 'form': form
             })    
        
     else:
          form = PredictForm()
-
-
 
          return render(request, 'predictor/index.html', {'form': form})

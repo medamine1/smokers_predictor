@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(__file__)
 model_path = os.path.join(BASE_DIR, 'model.pkl')
 scaler_path = os.path.join(BASE_DIR, 'scaler.pkl')
 scaler = joblib.load(scaler_path)
-model = joblib.load(model_path)
+best_model = joblib.load(model_path)
 
 def predict(input_data):
     features = [
@@ -37,7 +37,7 @@ def predict(input_data):
     features_array = np.array([features])
     scaled_features = scaler.transform(features_array)
 
-    prediction = model.predict(scaled_features)[0]
-    probability = model.predict_proba(scaled_features)[0][1]
+    prediction = best_model.predict(scaled_features)[0]
+    probability = best_model.predict_proba(scaled_features)[0][1]
 
     return prediction, probability
