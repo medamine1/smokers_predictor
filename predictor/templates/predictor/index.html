@@ -1,109 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Smoker Predictor</title>
-<style>
-  /* Reset */
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .container {
-    background: #fff;
-    max-width: 480px;
-    width: 100%;
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .container:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-  }
-
-  h2 {
-    margin-bottom: 25px;
-    text-align: center;
-    color: #4a4a4a;
-    font-weight: 700;
-    font-size: 1.8rem;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #555;
-    font-size: 0.95rem;
-  }
-
-  input, select {
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1.8px solid #ccc;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-  }
-
-  input:focus, select:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 6px #667eea;
-    outline: none;
-  }
-
-  .errorlist {
-    color: #d93025;
-    font-size: 0.875rem;
-    margin-top: 4px;
-    margin-bottom: -10px;
-  }
-
-  button {
-    margin-top: 25px;
-    padding: 14px;
-    background: #667eea;
-    border: none;
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  button:hover {
-    background: #5a67d8;
-  }
-
-  /* Responsive */
-  @media (max-width: 500px) {
-    .container {
-      padding: 25px 20px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smoker Predictor</title>
+  <style>
+    * {
+      box-sizing: border-box;
     }
-  }
-</style>
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      max-width: 800px;
+      width: 100%;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      text-align: center;
+      color: #4a4a4a;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      margin-bottom: 0;
+    }
+
+    .form-section h3 {
+      margin-bottom: 15px;
+      font-size: 1.15rem;
+      color: #4a4a4a;
+      border-left: 4px solid #667eea;
+      padding-left: 10px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #ccc;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    input:focus, select:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 6px #667eea;
+      outline: none;
+    }
+
+    .errorlist {
+      color: #d93025;
+      font-size: 0.8rem;
+      margin-top: 4px;
+      margin-bottom: -8px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #667eea;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      max-width: 240px;
+      align-self: center;
+    }
+
+    button:hover {
+      background: #5a67d8;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -111,17 +135,131 @@
   <h2>Predict if You're a Smoker</h2>
   <form method="post" novalidate>
     {% csrf_token %}
-    {% for field in form %}
-      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-      {{ field }}
-      {% if field.errors %}
-        <ul class="errorlist">
-          {% for error in field.errors %}
-            <li>{{ error }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endfor %}
+
+    <div class="form-section">
+      <h3>Vitals</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="{{ form.age.id_for_label }}">{{ form.age.label }}</label>
+          {{ form.age }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.height_cm.id_for_label }}">{{ form.height_cm.label }}</label>
+          {{ form.height_cm }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.weight_kg.id_for_label }}">{{ form.weight_kg.label }}</label>
+          {{ form.weight_kg }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.waist_cm.id_for_label }}">{{ form.waist_cm.label }}</label>
+          {{ form.waist_cm }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Vision & Hearing</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="{{ form.eyesight_left.id_for_label }}">{{ form.eyesight_left.label }}</label>
+          {{ form.eyesight_left }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.eyesight_right.id_for_label }}">{{ form.eyesight_right.label }}</label>
+          {{ form.eyesight_right }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.hearing_left.id_for_label }}">{{ form.hearing_left.label }}</label>
+          {{ form.hearing_left }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.hearing_right.id_for_label }}">{{ form.hearing_right.label }}</label>
+          {{ form.hearing_right }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Blood Pressure & Sugar</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="{{ form.systolic.id_for_label }}">{{ form.systolic.label }}</label>
+          {{ form.systolic }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.relaxation.id_for_label }}">{{ form.relaxation.label }}</label>
+          {{ form.relaxation }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.fasting_blood_sugar.id_for_label }}">{{ form.fasting_blood_sugar.label }}</label>
+          {{ form.fasting_blood_sugar }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Blood Lipids</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="{{ form.Cholesterol.id_for_label }}">{{ form.Cholesterol.label }}</label>
+          {{ form.Cholesterol }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.triglyceride.id_for_label }}">{{ form.triglyceride.label }}</label>
+          {{ form.triglyceride }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.HDL.id_for_label }}">{{ form.HDL.label }}</label>
+          {{ form.HDL }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.LDL.id_for_label }}">{{ form.LDL.label }}</label>
+          {{ form.LDL }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>General Health</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="{{ form.hemoglobin.id_for_label }}">{{ form.hemoglobin.label }}</label>
+          {{ form.hemoglobin }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.Urine_protein.id_for_label }}">{{ form.Urine_protein.label }}</label>
+          {{ form.Urine_protein }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.serum_creatinine.id_for_label }}">{{ form.serum_creatinine.label }}</label>
+          {{ form.serum_creatinine }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.dental_caries.id_for_label }}">{{ form.dental_caries.label }}</label>
+          {{ form.dental_caries }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Liver Enzymes</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="{{ form.AST.id_for_label }}">{{ form.AST.label }}</label>
+          {{ form.AST }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.ALT.id_for_label }}">{{ form.ALT.label }}</label>
+          {{ form.ALT }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.Gtp.id_for_label }}">{{ form.Gtp.label }}</label>
+          {{ form.Gtp }}
+        </div>
+      </div>
+    </div>
+
     <button type="submit">Predict</button>
   </form>
 </div>

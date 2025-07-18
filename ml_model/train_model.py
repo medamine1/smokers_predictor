@@ -10,7 +10,6 @@ from sklearn.metrics import accuracy_score, classification_report, precision_sco
 
 df = pd.read_csv('C:/Users/ELYADRIMohammedAmine/Downloads/train.csv')
 df = df.dropna()
-
 X = df.drop(['id', 'smoking'], axis=1)
 y = df['smoking']
 scaler = MinMaxScaler()
